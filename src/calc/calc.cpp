@@ -1,6 +1,7 @@
 #include "calc_interface/EngineInterface.hpp"
 #include "calc_interface/Calculator.hpp"
 #include "multiply/multiply.hpp"
+#include "divide/divide.hpp"
 #include <string>
 #include <vector>
 #include <iomanip>
@@ -48,9 +49,12 @@ void main(int argc, char *argv[])
         return;
     }
     calculator.addEngine<MultiplyIntegers>();
+    calculator.addEngine<DivideIntegers>();
     auto engine = calculator.getEngine(argv[1]);
     bool areWeProcessingInts = true;
     //parse inputs
+    /// The logic that I use is that if all the inputs happen to be integers we assume that 
+    /// we are not processing files, othewise we assume we are processing files
     for (int i = 2; i < argc; ++i)
     {
         args.push_back(argv[i]);        

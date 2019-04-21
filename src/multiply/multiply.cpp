@@ -19,20 +19,8 @@ namespace aptive_exercise
     MultiplyIntegers::MultiplyIntegers()
         :fOutStream{ &std::cout } {}
     STATUS MultiplyIntegers::processArguments(const std::vector<int> &args) {
-        long long result = 1;
-        for (const auto& arg : args) {
-            if (!checkOverUnderFlow(result, arg)) {
-                std::cerr << "Overflow/Underflow occurred";
-                return STATUS::FAILURE;
-            }
-            result *= arg;
-            if (result == 0) {
-                break;
-            }
-        }
-        (*fOutStream) << result;
-        ///\todo:handle overflow/underflow
-        return STATUS::SUCCESS; //nothing can go wrong with multiplying numbers apart from overflow/underflow
+        std::cerr << "Multiply Engine only works with Files";
+        return STATUS::FAILURE; 
     }
     STATUS MultiplyIntegers::processFile(const std::string &aFile) {
         std::fstream ifile(aFile);

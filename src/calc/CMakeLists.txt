@@ -10,5 +10,5 @@ target_link_libraries(calc
                       PUBLIC 
                       libcalc_interface
                       libmultiply 
-                      #libdivide
+                      libdivide
                       )
