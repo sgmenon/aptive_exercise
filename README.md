@@ -53,6 +53,7 @@ Here are some basic instructions on how to add a new engine directly to the **ca
     #endif
 ```
 I have provided doxygen style comments to the EngineInterface.hpp file for further information.
+
 3. Provide the body for the class in the appropriate cpp file
 4. In calc.cpp, include the new header file, and add the engine the the `calculator` object. For example
    * Add a `#include "StandardDeviation.h"` to the top of the file
