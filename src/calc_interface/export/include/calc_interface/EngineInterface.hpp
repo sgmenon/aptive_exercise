@@ -36,7 +36,7 @@ namespace aptive_exercise {
          * in order to do processing.
          * \return Status: success or failure at parsing the file. 
          * This function is meant to be exception safe, and I consider the use of RTTI not something I would 
-         * use in a production embedded system
+         * use in a production embedded system, which is why I return a status code
         */
         virtual STATUS processFile(const std::string& aFile) = 0;
     };
