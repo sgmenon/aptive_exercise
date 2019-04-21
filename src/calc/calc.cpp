@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-#include <cmath>
+#include <climits>
 
 namespace {
     enum STR2INT_ERROR
@@ -38,7 +38,7 @@ namespace {
     }
 } // namespace
 
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     std::vector<std::string> args;
     std::vector<int> int_args;
@@ -47,7 +47,7 @@ void main(int argc, char *argv[])
     using namespace aptive_exercise;
     Calculator<int> calculator;
     if (argc<2){
-        return;
+        return 0;
     }
     calculator.addEngine<MultiplyIntegers>();
     calculator.addEngine<DivideIntegers>();
@@ -81,4 +81,5 @@ void main(int argc, char *argv[])
             }
         }
     }
+    return 0;
 }
