@@ -1,4 +1,6 @@
-# Step 1: Download 3P Dependencies
+# :1234: A Simple Calculation Engine
+
+## Step 1: Download 3P Dependencies
 
 For Windows:
 * [CMake](https://cmake.org/download/)
@@ -8,7 +10,7 @@ For Linux (Ubuntu or Debian):
 > sudo apt-get install cmake 
 ```
   
-# Step 2: Build and Run Unit Tests
+## Step 2: Build and Run Unit Tests
 
 I have chosen to use the Google Test framework to unit-test my code.
 To make things easier I have hooked up the CMakeList file to automatically build and download Google Test if you do not already have Google Test installed.
@@ -28,7 +30,38 @@ For Windows (in this example we explicitly want to use the MSVC 2017 64 bit comp
    > cmake --build .
    > ctest -C "Debug" -V
 ```
+## Instructions on how to add a new "Engine" for this calculator
 
-# References
+The best way to add a new calculator would be to make a library similar to libmultiply and libdivide.
+
+Here are some basic instructions on how to add a new engine directly to the calc executable module
+1. Create a new source file and header file under src/calc. For example:
+   * `StandardDeviation.hpp`
+   * `StandardDeviation.cpp`
+2. The header must have a class that derives from the interface class `aptive_exercise::EngineInterface`. For example: StandardDeviation.hpp woulld look something like this:
+```C++
+   #ifndef _std_dev_
+   #define _std_dev_
+   class  StandardDeviation : public aptive_exercise::EngineInterface<int>
+    {
+    public:
+        StandardDeviation();
+        virtual const std::string getName() const override {return "StandardDeviation";}
+        virtual STATUS processArguments(const std::vector<int>& args) override;
+        virtual STATUS processFile(const std::string& aFile) override;
+    };
+    #endif
+```
+3. Provide the body for the class in the appropriate cpp file
+4. In calc.cpp, include the new header file, and add the engine the the `calculator` object. For eacmple
+   * Add a `#include "StandardDeviation.h"` to the top of the file
+   * Just before the line that looks like `auto engine = calculator.getEngine(argv[1]);`, add the command
+   ```C++
+    calculator.addEngine<StandardDeviation>();
+   ```
+5. Interactively verify that everything works as expected
+6. Then do the responsible thing and move your code to a shared/static library so that it can be exported modularly and unittested effectively
+
+## References
 
 [CMAKE + GTEST](https://github.com/kaizouman/gtest-cmake-example)
