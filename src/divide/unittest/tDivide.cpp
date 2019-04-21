@@ -15,13 +15,13 @@ TEST(Divider, ArgList){
     DivideIntegers engine;
     std::ostringstream fakeOstream;
     engine.setOutStream(fakeOstream);
-    engine.processArguments({ 1,2,3,4,5,6,7,8,9,10 });
+    engine.processArgumentsImpl({ 1,2,3,4,5,6,7,8,9,10 });
     EXPECT_EQ(fakeOstream.str(), "2.755731922e-07");
     fakeOstream.str("");
-    engine.processArguments({ 1000,10,1 });
+    engine.processArgumentsImpl({ 1000,10,1 });
     EXPECT_EQ(fakeOstream.str(), "100");
     fakeOstream.str("");
-    engine.processArguments({});
+    engine.processArgumentsImpl({});
     EXPECT_EQ(fakeOstream.str(), "nan");
 }
 
@@ -30,11 +30,11 @@ TEST(Divider, FileTester){
     DivideIntegers engine;
     std::ostringstream fakeOstream;
     engine.setOutStream(fakeOstream);
-    engine.processFile(fileLocation);
+    engine.processFileImpl(fileLocation);
     EXPECT_EQ(fakeOstream.str(), "2.755731922e-07");
     fakeOstream.str("");
     fileLocation = std::string(UNITTEST_DIR) + "/testFiles/second.txt";
-    engine.processFile(fileLocation);
+    engine.processFileImpl(fileLocation);
     EXPECT_EQ(fakeOstream.str(), "1"); 
 }
 
@@ -43,11 +43,11 @@ TEST(Divider, FileNegative) {
     DivideIntegers engine;
     std::ostringstream fakeOstream;
     engine.setOutStream(fakeOstream);
-    auto out = engine.processFile(fileLocation);
+    auto out = engine.processFileImpl(fileLocation);
     EXPECT_EQ(fakeOstream.str(), "");
     EXPECT_EQ(out,STATUS::FAILURE);
     fakeOstream.str("");
     fileLocation = std::string(UNITTEST_DIR) + "/testFiles/doesNotExist.txt";
-    out = engine.processFile(fileLocation);
+    out = engine.processFileImpl(fileLocation);
     EXPECT_EQ(out, STATUS::FAILURE);
 }

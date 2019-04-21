@@ -10,7 +10,7 @@
 
 namespace aptive_exercise
 {
-    template <typename T, typename K, 
+    template <typename T, typename K,
         typename = std::enable_if<
             std::is_trivially_constructible<K>::value && 
             std::is_base_of<EngineInterface<T>, K>::value>>
@@ -18,7 +18,8 @@ namespace aptive_exercise
     {
         EngineFactory() = delete;
         static std::unique_ptr<EngineInterface<T>> create(){
-            return std::unique_ptr<EngineInterface<T>>(new K());
+             auto ret = std::unique_ptr<EngineInterface<T>>(new K());
+             return ret;
         }
     };
     
@@ -27,8 +28,10 @@ namespace aptive_exercise
         std::unordered_map<std::string, std::unique_ptr<EngineInterface<T>>> fEngines;
     public:
         template<typename K>
-        void addEngine() {
+        void addEngine(bool aSupportsCommandLineInputs = true, bool aSupportsFileInput = true){
             auto lEngine = EngineFactory<T, K>::create();
+            lEngine->fSupportsCommandLineInputs = aSupportsCommandLineInputs;
+            lEngine->fSupportsFileInput = aSupportsFileInput;
             fEngines[lEngine->getName()] = std::move(lEngine);
         }
         EngineInterface<T>* getEngine(const std::string& aName) {

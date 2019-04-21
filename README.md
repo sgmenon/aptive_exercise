@@ -59,6 +59,10 @@ I have provided doxygen style comments to the EngineInterface.hpp file for furth
    * Just before the line that looks like `auto engine = calculator.getEngine(argv[1]);`, add the command
    ```C++
     calculator.addEngine<StandardDeviation>();
+    /*
+    calculator.addEngine<StandardDeviation>(false); //for an engine that does not support command line inputs
+    calculator.addEngine<StandardDeviation>(false, true); //for an engine that does not support file inputs
+    */
    ```
 5. Interactively verify that everything works as expected
 6. Then do the responsible thing and move your code to a shared/static library so that it can be exported modularly and unittested effectively

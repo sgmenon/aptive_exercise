@@ -17,8 +17,8 @@ namespace aptive_exercise
             fOutStream = &aStream;
         }
         virtual const std::string getName() const override {return "Divide";}
-        virtual STATUS processArguments(const std::vector<int>& args) override;
-        virtual STATUS processFile(const std::string& aFile) override;
+        virtual STATUS processArgumentsImpl(const std::vector<int>& args) override;
+        virtual STATUS processFileImpl(const std::string& aFile) override;
     };
 } // namespace aptive_exercise
 #endif /*_calc_divide*/

@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     calculator.addEngine<MultiplyIntegers>();
-    calculator.addEngine<DivideIntegers>();
+    calculator.addEngine<DivideIntegers>(false);
     auto engine = calculator.getEngine(argv[1]);
     bool areWeProcessingInts = true;
     //parse inputs

@@ -9,7 +9,7 @@ namespace aptive_exercise
 {
     DivideIntegers::DivideIntegers() 
         :fOutStream{ &std::cout } {}
-    STATUS DivideIntegers::processArguments(const std::vector<int> &args) {
+    STATUS DivideIntegers::processArgumentsImpl(const std::vector<int> &args) {
         long double result = std::nanl("");
         bool isFirst = true;
         for (const auto& arg:args){
@@ -30,7 +30,7 @@ namespace aptive_exercise
         (*fOutStream) << std::setprecision(10) << std::defaultfloat <<result;
         return STATUS::SUCCESS;
     }
-    STATUS DivideIntegers::processFile(const std::string &aFile) {
+    STATUS DivideIntegers::processFileImpl(const std::string &aFile) {
         std::fstream ifile(aFile);
         ifile<<std::dec;
         long double result = std::nanl("");
