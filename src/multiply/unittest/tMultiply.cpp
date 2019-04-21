@@ -1,6 +1,7 @@
 #include "multiply/multiply.hpp"
 #include "calc_interface/Calculator.hpp"
 #include "gtest/gtest.h"
+#include <climits>
 
 using namespace aptive_exercise;
 
@@ -26,6 +27,18 @@ TEST(Multiplier, ArgList){
     fakeOstream.str("");
     engine.processArguments({93493, 2323, 23235});
     EXPECT_EQ(fakeOstream.str(), "5046275793165");    
+}
+TEST(Multiplier, ArgListNegative) {
+    MultiplyIntegers engine;
+    std::ostringstream fakeOstream;
+    engine.setOutStream(fakeOstream);
+    std::vector<int> ins;
+    for (auto i = 0; i < 20; i++) {
+        ins.push_back(INT_MAX);
+    }
+    auto result = engine.processArguments(ins);
+    EXPECT_EQ(fakeOstream.str(), "");
+    EXPECT_EQ(result, STATUS::FAILURE);
 }
 
 TEST(Multiplier, FileTester){

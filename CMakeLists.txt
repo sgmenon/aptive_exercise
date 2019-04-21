@@ -2,23 +2,25 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(calc)
 
-#add_definitions( -DBOOST_ALL_NO_LIB )
-# Set this externally using -DBOOST_ROOT=...
-## set(BOOST_ROOT C:/boost/boost_1_64_0) 
-## set(BOOST_INCLUDEDIR c:/boost/boost_1_64_0) 
-## set(BOOST_LIBRARYDIR C:/boost/boost_1_64_0/stage/lib)
-#set(Boost_USE_STATIC_LIBS OFF) 
-#set(Boost_USE_MULTITHREADED ON)  
-#find_package(Boost REQUIRED regex system timer thread date_time signals filesystem)
+# I considered adding boost so that we could do filesystem operations in a platform agnostic manner,
+# but that just complicated the workflow for running this project too much
+# {
+#   add_definitions( -DBOOST_ALL_NO_LIB )
+#   Set this externally using -DBOOST_ROOT=...
+#   # set(BOOST_ROOT C:/boost/boost_1_64_0) 
+#   # set(BOOST_INCLUDEDIR c:/boost/boost_1_64_0) 
+#   # set(BOOST_LIBRARYDIR C:/boost/boost_1_64_0/stage/lib)
+#   set(Boost_USE_STATIC_LIBS OFF) 
+#   set(Boost_USE_MULTITHREADED ON)  
+#   find_package(Boost REQUIRED regex system timer thread date_time signals filesystem)
+#   include_directories(${Boost_INCLUDE_DIRS})
+# }
 
 set (CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-#include_directories("${CMAKE_SOURCE_DIR}/3p/include" ${Boost_INCLUDE_DIRS})
-#link_directories("${CMAKE_SOURCE_DIR}/3p/libraries")
 
 enable_testing()
 # Download and unpack googletest at configure time

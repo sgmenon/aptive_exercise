@@ -66,11 +66,13 @@ void main(int argc, char *argv[])
         }
     }
     if (areWeProcessingInts) {
-        engine->processArguments(int_args);
+        if (engine->processArguments(int_args) != STATUS::SUCCESS) {
+            exit(1);
+        }
     } else {
         for (const auto&arg:args) {
             if (engine->processFile(arg+".txt") != STATUS::SUCCESS) {
-                exit(1);
+                std::cerr << std::string("Something wrong with ") + arg + ".txt\n";
             }
         }
     }

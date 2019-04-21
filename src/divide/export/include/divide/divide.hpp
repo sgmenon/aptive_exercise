@@ -1,5 +1,5 @@
-#ifndef _calc_multiply
-#define _calc_multiply
+#ifndef _calc_divide
+#define _calc_divide
 
 #include "calc_interface/EngineInterface.hpp"
 #include "spec.hpp"
@@ -8,17 +8,17 @@
 
 namespace aptive_exercise
 {
-    class MULTIPLY_EXPORT MultiplyIntegers : public EngineInterface<int>
+    class DIVIDE_EXPORT DivideIntegers : public EngineInterface<int>
     {
         std::ostream* fOutStream;
     public:
-        MultiplyIntegers();
+        DivideIntegers();
         void setOutStream(std::ostream& aStream) {
             fOutStream = &aStream;
         }
-        virtual const std::string getName() const override {return "Multiply";}
+        virtual const std::string getName() const override {return "Divide";}
         virtual STATUS processArguments(const std::vector<int>& args) override;
         virtual STATUS processFile(const std::string& aFile) override;
     };
 } // namespace aptive_exercise
-#endif /*_calc_multiply*/
+#endif /*_calc_divide*/

@@ -28,7 +28,7 @@ namespace aptive_exercise {
          * \brief: processArguments reads the input data from a vector in memory, calculates a result
          *  and display the result on stdout.
         */
-        virtual void processArguments(const std::vector<T>& args) = 0;
+        virtual STATUS processArguments(const std::vector<T>& args) = 0;
         /*!
          * \brief ProcessFile reads the input data from a file, calculates a result
          *  and display the result on stdout.
