@@ -3,13 +3,14 @@
 #include <fstream>
 #include <cassert>
 #include <iomanip>
+#include <cmath>
 
 namespace aptive_exercise
 {
     DivideIntegers::DivideIntegers() 
         :fOutStream{ &std::cout } {}
     STATUS DivideIntegers::processArguments(const std::vector<int> &args) {
-        long double result = NAN;
+        long double result = std::nanl("");
         bool isFirst = true;
         for (const auto& arg:args){
             if (isFirst) {
@@ -32,7 +33,7 @@ namespace aptive_exercise
     STATUS DivideIntegers::processFile(const std::string &aFile) {
         std::fstream ifile(aFile);
         ifile<<std::dec;
-        long double result = NAN;
+        long double result = std::nanl("");
         bool isFirst = true;
         if (ifile.fail()){
             std::cerr << "corrupted or missing file"<<std::endl;

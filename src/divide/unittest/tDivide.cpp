@@ -19,7 +19,10 @@ TEST(Divider, ArgList){
     EXPECT_EQ(fakeOstream.str(), "2.755731922e-07");
     fakeOstream.str("");
     engine.processArguments({ 1000,10,1 });
-    EXPECT_EQ(fakeOstream.str(), "100");   
+    EXPECT_EQ(fakeOstream.str(), "100");
+    fakeOstream.str("");
+    engine.processArguments({});
+    EXPECT_EQ(fakeOstream.str(), "nan");
 }
 
 TEST(Divider, FileTester){
