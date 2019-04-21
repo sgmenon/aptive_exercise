@@ -1,18 +1,19 @@
 # Step 1: Download 3P Dependencies
 
 For Windows:
-* [Google Test Framework](https://github.com/google/googletest)
 * [CMake](https://cmake.org/download/)
 	
 For Linux (Ubuntu or Debian):
 * ``` sh
-        > sudo apt-get install libgtest-dev
         > sudo apt-get install cmake 
   ```
   
 # Step 2: Build and Run Unit Tests
 
-Assuming cmake and ctest are installed and are on the system path
+I have chosen to use the Google Test framework to unit-test my code.
+To make things easier I have hooked up the CMakeList file to automatically build and download Google Test if you do not already have Google Test installed.
+
+Assuming cmake is installed and are on the system path
 For Linux
 ``` sh
     > cd $(git rev-parse --git-dir)/../build
