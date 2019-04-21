@@ -47,7 +47,6 @@ namespace aptive_exercise {
                 return processArgumentsImpl(args);
             }
             else {
-                std::cerr << "Engine does not support processArguments()" << std::endl;
                 return STATUS::FAILURE;
             }
         }
@@ -67,7 +66,6 @@ namespace aptive_exercise {
                 return processFileImpl(aFile);
             }
             else {
-                std::cerr << "Engine does not support processArguments()" << std::endl;
                 return STATUS::FAILURE;
             }
         }
