@@ -5,6 +5,8 @@
 
 namespace aptive_exercise
 {
+    MultiplyIntegers::MultiplyIntegers() 
+        :fOutStream{ &std::cout } {}
     void MultiplyIntegers::processArguments(const std::vector<int> &args) {
         long long result = 1;
         for (const auto& arg:args){
@@ -13,23 +15,29 @@ namespace aptive_exercise
                 break;
             }
         }
-        std::cout<<result;
+        (*fOutStream)<<result;
     }
-    void MultiplyIntegers::processFile(const std::string &aFile) {
+    STATUS MultiplyIntegers::processFile(const std::string &aFile) {
         std::fstream ifile(aFile);
         ifile<<std::dec;
         long long result = 1;
         if (ifile.fail()){
-            assert(false, "corrupted or missing file");
+            std::cerr << "corrupted or missing file";
+            return STATUS::FAILURE;
         }
         while (!ifile.eof()){
             int val;
             ifile>>std::dec>>val;
             if (ifile.fail()){
-                assert(false, "corrupted file");
+                std::cerr << "corrupted file";
+                return STATUS::FAILURE;
             }
             result *= val;
+            if (result == 0) {
+                break;
+            }
         }
-        std::cout<<result;
+        (*fOutStream)<<result;
+        return STATUS::SUCCESS;
     }
 } // namespace aptive_exercise

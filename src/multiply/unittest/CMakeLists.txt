@@ -1,12 +1,13 @@
 file(GLOB SRCS *.cpp *.hpp)
-ADD_EXECUTABLE(project_unittest ${SRCS})
+ADD_EXECUTABLE(libmultiply_unittest ${SRCS})
 
 remove_definitions(-DBUILDING_MULTIPLY)
+add_definitions(-DUNITTEST_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}\")
 
-TARGET_LINK_LIBRARIES(project_unittest
-    libsid_project
+TARGET_LINK_LIBRARIES(libmultiply_unittest
+    libmultiply
     gtest_main
 )
 
-add_test(NAME project_unittest
-COMMAND project_unittest)
+add_test(NAME libmultiply_unittest
+COMMAND libmultiply_unittest)

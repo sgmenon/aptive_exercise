@@ -4,9 +4,9 @@ For Windows:
 * [CMake](https://cmake.org/download/)
 	
 For Linux (Ubuntu or Debian):
-* ``` sh
-        > sudo apt-get install cmake 
-  ```
+``` sh
+> sudo apt-get install cmake 
+```
   
 # Step 2: Build and Run Unit Tests
 

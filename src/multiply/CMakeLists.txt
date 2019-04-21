@@ -11,11 +11,12 @@ add_library(libmultiply SHARED
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/export/include" )
 
-target_link_libraries(libmultiply INTERFACE libcalc_interface)
+target_link_libraries(libmultiply 
+                      PUBLIC libcalc_interface)
 
 target_include_directories(libmultiply PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/export/include>
-  $<INSTALL_INTERFACE:export/include>  
+  $<INSTALL_INTERFACE:include/multiply>  
 )
 
 add_subdirectory(unittest)

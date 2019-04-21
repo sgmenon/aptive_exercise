@@ -69,7 +69,9 @@ void main(int argc, char *argv[])
         engine->processArguments(int_args);
     } else {
         for (const auto&arg:args) {
-            engine->processFile(arg);
+            if (engine->processFile(arg+".txt") != STATUS::SUCCESS) {
+                exit(1);
+            }
         }
     }
 }

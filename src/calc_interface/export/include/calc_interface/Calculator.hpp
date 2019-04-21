@@ -11,14 +11,14 @@
 namespace aptive_exercise
 {
     template <typename T, typename K, 
-        std::enable_if<
+        typename = std::enable_if<
             std::is_trivially_constructible<K>::value && 
             std::is_base_of<EngineInterface<T>, K>::value>>
     struct EngineFactory
     {
         EngineFactory() = delete;
         static std::unique_ptr<EngineInterface<T>> create(){
-            return {new K()};
+            return std::unique_ptr<EngineInterface<T>>(new K());
         }
     };
     
@@ -29,7 +29,7 @@ namespace aptive_exercise
         template<typename K>
         void addEngine() {
             auto lEngine = EngineFactory<T, K>::create();
-            fEngines[lEngine->name] = lEngine;
+            fEngines[lEngine->getName()] = std::move(lEngine);
         }
         EngineInterface<T>* getEngine(const std::string& aName) {
             auto fr = fEngines.find(aName);
