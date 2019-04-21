@@ -32,9 +32,9 @@ For Windows (in this example we explicitly want to use the MSVC 2017 64 bit comp
 ```
 ## Instructions on how to add a new "Engine" for this calculator
 
-The best way to add a new calculator would be to make a library similar to libmultiply and libdivide.
+The best way to add a new calculator would be to make a library similar to *libmultiply* and *libdivide*.
 
-Here are some basic instructions on how to add a new engine directly to the calc executable module
+Here are some basic instructions on how to add a new engine directly to the **calc** executable module
 1. Create a new source file and header file under src/calc. For example:
    * `StandardDeviation.hpp`
    * `StandardDeviation.cpp`
