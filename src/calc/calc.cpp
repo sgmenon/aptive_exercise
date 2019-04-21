@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <cmath>
 
 namespace {
     enum STR2INT_ERROR
