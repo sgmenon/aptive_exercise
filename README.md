@@ -18,13 +18,17 @@ To make things easier I have hooked up the CMakeList file to automatically build
 Assuming cmake is installed and are on the system path
 For Linux
 ``` sh
-    > cd $(git rev-parse --git-dir)/../build
+    > cd $(git rev-parse --git-dir)
+    > mkdir build
+    > cd build
     > cmake ../
     > cmake --build .
     > ctest -C "Debug"
 ```
 For Windows (in this example we explicitly want to use the MSVC 2017 64 bit compiler)
-```sh
+```cmd
+   > cd $(git rev-parse --git-dir)
+   > mkdir build
    > cd build
    > cmake -G "Visual Studio 15 2017 Win64" ../
    > cmake --build .
