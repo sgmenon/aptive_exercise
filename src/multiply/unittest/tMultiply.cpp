@@ -38,7 +38,7 @@ TEST(Multiplier, CalcEngineArgListNegative) {
     engine->setOutStream(fakeOstream);
     auto result = engine->processArguments({ 1,2,3,4,5,6,7,8,9,10 });
     EXPECT_EQ(fakeOstream.str(), "");
-    EXPECT_EQ(result, STATUS::FAILURE);
+    EXPECT_EQ(result, STATUS::UNSUPPORTED);
 }
 
 TEST(Multiplier, FileTester) {

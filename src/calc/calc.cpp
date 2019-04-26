@@ -74,12 +74,21 @@ int main(int argc, char *argv[])
         }
     }
     if (areWeProcessingInts) {
-        if (engine->processArguments(int_args) != STATUS::SUCCESS) {
+        auto result = engine->processArguments(int_args);
+        if (result == STATUS::UNSUPPORTED) {
+            std::cerr<<"unsupported engine feature: command line integers\n";
+            exit(1);
+        } else if (result == STATUS::FAILURE){
+            std::cerr<<"Calculation error - exiting\n";
             exit(1);
         }
     } else {
         for (const auto&arg:args) {
-            if (engine->processFile(arg+".txt") != STATUS::SUCCESS) {
+            auto result = engine->processFile(arg+".txt");
+            if (result == STATUS::UNSUPPORTED) {
+                std::cerr<<"unsupported engine feature: file parsing\n";
+                exit(1);
+            } else if (result == STATUS::FAILURE){
                 std::cerr << std::string("Something wrong with ") + arg + ".txt\n";
             }
         }

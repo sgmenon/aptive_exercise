@@ -13,6 +13,7 @@ namespace aptive_exercise {
 
     enum class STATUS {
         SUCCESS,
+        UNSUPPORTED,
         FAILURE
     };
 
@@ -47,7 +48,7 @@ namespace aptive_exercise {
                 return processArgumentsImpl(args);
             }
             else {
-                return STATUS::FAILURE;
+                return STATUS::UNSUPPORTED;
             }
         }
 
@@ -66,7 +67,7 @@ namespace aptive_exercise {
                 return processFileImpl(aFile);
             }
             else {
-                return STATUS::FAILURE;
+                return STATUS::UNSUPPORTED;
             }
         }
     protected:
