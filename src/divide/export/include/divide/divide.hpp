@@ -16,7 +16,7 @@ namespace aptive_exercise
         void setOutStream(std::ostream& aStream) {
             fOutStream = &aStream;
         }
-        virtual const std::string getName() const override {return "Divide";}
+        virtual const std::string getName() const override {return "Divider";}
         virtual STATUS processArgumentsImpl(const std::vector<int>& args) override;
         virtual STATUS processFileImpl(const std::string& aFile) override;
     };

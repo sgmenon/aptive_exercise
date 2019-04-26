@@ -49,9 +49,12 @@ int main(int argc, char *argv[])
     if (argc<2){
         return 0;
     }
-    calculator.addEngine<MultiplyIntegers>();
-    calculator.addEngine<DivideIntegers>(false);
+    calculator.addEngine<MultiplyIntegers>(false);
+    calculator.addEngine<DivideIntegers>();
     auto engine = calculator.getEngine(argv[1]);
+    if (engine==nullptr){
+        return 0;
+    }
     bool areWeProcessingInts = true;
     //parse inputs
     /// The logic that I use is that if all the inputs happen to be integers we assume that 

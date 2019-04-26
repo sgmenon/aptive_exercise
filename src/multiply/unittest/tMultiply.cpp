@@ -9,7 +9,7 @@ using namespace aptive_exercise;
 TEST(Multiplier, CanCalculatorFindIt) {
     Calculator<int> calculator;
     calculator.addEngine<MultiplyIntegers>();
-    auto engine = calculator.getEngine("Multiply");
+    auto engine = calculator.getEngine("Multiplier");
     ASSERT_NE(engine, nullptr);
 }
 
@@ -33,7 +33,7 @@ TEST(Multiplier, ArgList) {
 TEST(Multiplier, CalcEngineArgListNegative) {
     Calculator<int> calculator;
     calculator.addEngine<MultiplyIntegers>(false);
-    auto engine = dynamic_cast<MultiplyIntegers*>(calculator.getEngine("Multiply"));
+    auto engine = dynamic_cast<MultiplyIntegers*>(calculator.getEngine("Multiplier"));
     std::ostringstream fakeOstream;
     engine->setOutStream(fakeOstream);
     auto result = engine->processArguments({ 1,2,3,4,5,6,7,8,9,10 });

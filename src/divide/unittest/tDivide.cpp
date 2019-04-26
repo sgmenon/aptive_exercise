@@ -7,7 +7,7 @@ using namespace aptive_exercise;
 TEST(Divider, CanCalculatorFindIt){
     Calculator<int> calculator;
     calculator.addEngine<DivideIntegers>();
-    auto engine = calculator.getEngine("Divide");
+    auto engine = calculator.getEngine("Divider");
     ASSERT_NE(engine, nullptr);
 }
 
