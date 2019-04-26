@@ -51,7 +51,6 @@ For Linux
 ```
 For Windows (in this example we explicitly want to use the MSVC 2017 64 bit compiler)
 ```cmd
-   > cd $(git rev-parse --git-dir)
    > mkdir build
    > cd build
    > cmake -G "Visual Studio 15 2017 Win64" ../
