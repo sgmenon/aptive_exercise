@@ -37,6 +37,7 @@ namespace aptive_exercise
     STATUS MultiplyIntegers::processFileImpl(const std::string &aFile) {
         std::fstream ifile(aFile);
         ifile << std::dec;
+        uint32_t lineno=0;
         long long result = 1;
         if (ifile.fail()) {
             std::cerr << "corrupted or missing file" << std::endl;
@@ -44,10 +45,11 @@ namespace aptive_exercise
         }
         while (!ifile.eof()) {
             int val;
+            ++lineno;
             ifile >> std::dec >> val;
             if (ifile.fail()) {
-                std::cerr << "corrupted file" << std::endl;
-                return STATUS::FAILURE;
+                std::cerr << "skipping line #"<<lineno;
+                continue;
             }
             if (!checkOverUnderFlow(result, val)) {
                 std::cerr << "Overflow/Underflow occurred";
