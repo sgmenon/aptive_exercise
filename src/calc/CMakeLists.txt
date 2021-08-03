@@ -8,9 +8,9 @@ add_executable(calc
                       
 target_link_libraries(calc               
                       PUBLIC 
-                      libcalc_interface
-                      libmultiply 
-                      libdivide
+                      calc_interface
+                      mymultiply 
+                      mydivide
                       )
 
 install(TARGETS calc DESTINATION bin)
