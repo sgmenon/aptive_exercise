@@ -19,4 +19,6 @@ target_include_directories(libdivide PUBLIC
   $<INSTALL_INTERFACE:include/DIVIDE>  
 )
 
+install(TARGETS libdivide DESTINATION lib)
+
 add_subdirectory(unittest)

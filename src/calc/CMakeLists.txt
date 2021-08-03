@@ -12,3 +12,5 @@ target_link_libraries(calc
                       libmultiply 
                       libdivide
                       )
+
+install(TARGETS calc DESTINATION bin)

@@ -19,4 +19,6 @@ target_include_directories(libmultiply PUBLIC
   $<INSTALL_INTERFACE:include/multiply>  
 )
 
+install(TARGETS libmultiply DESTINATION lib)
+
 add_subdirectory(unittest)

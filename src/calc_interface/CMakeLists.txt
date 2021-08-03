@@ -6,3 +6,5 @@ target_include_directories(libcalc_interface INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   $<INSTALL_INTERFACE:include/calc_interface>
 )
+
+install(TARGETS libcalc_interface)
